@@ -41,7 +41,10 @@ import com.proyecto.tfg.Service.PlantLoveService;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "http://localhost:5173") // Permite solicitudes desde React
+@CrossOrigin(origins = {     			// Permite solicitudes desde React
+	"http://localhost:5173", 				// URL local
+	"https://tfg-front-seven.vercel.app/"	// URL servidor
+}) 
 public class PlantLoveRestController {
 
 	@Autowired
