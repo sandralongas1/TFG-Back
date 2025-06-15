@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.proyecto.tfg.Dto.In.CategoriaIn;
 import com.proyecto.tfg.Dto.In.PerfilIn;
+import com.proyecto.tfg.Dto.In.ProductoFilterIdsIn;
 import com.proyecto.tfg.Dto.In.ProductoFilterIn;
 import com.proyecto.tfg.Dto.In.ProductoIn;
 import com.proyecto.tfg.Dto.In.SubcategoriaFilterIn;
@@ -309,6 +310,12 @@ public class PlantLoveRestController {
 	@Transactional(readOnly = true)
 	public Iterable<ProductoOut> findAllProductoActivoFiltro(@RequestBody ProductoFilterIn filtros){
 		return PLService.findAllProductoActivoFiltro(filtros);
+	}
+	
+	@PostMapping("/producto/listarActivosFiltroIds")
+	@Transactional(readOnly = true)
+	public Iterable<ProductoOut> findAllProductoActivoFiltroIds(@RequestBody ProductoFilterIdsIn filtros){
+		return PLService.findAllProductoActivoFiltroIds(filtros);
 	}
 
 	@GetMapping("/producto/{id}")

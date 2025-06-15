@@ -2,6 +2,7 @@ package com.proyecto.tfg.Service;
 
 import com.proyecto.tfg.Dto.In.CategoriaIn;
 import com.proyecto.tfg.Dto.In.PerfilIn;
+import com.proyecto.tfg.Dto.In.ProductoFilterIdsIn;
 import com.proyecto.tfg.Dto.In.ProductoFilterIn;
 import com.proyecto.tfg.Dto.In.ProductoIn;
 import com.proyecto.tfg.Dto.In.SubcategoriaFilterIn;
@@ -107,6 +108,8 @@ public interface IPlantLoveService {
 
 	Iterable<ProductoOut> findAllProductoActivoFiltro(ProductoFilterIn filtros);
 	
+	Iterable<ProductoOut> findAllProductoActivoFiltroIds(ProductoFilterIdsIn filtros);
+	
 	Producto findProductoById(Long id);
 
 	void deleteProductoById(Long id);
@@ -129,7 +132,6 @@ public interface IPlantLoveService {
 //	-------------------------------------VENTA_PRODUCTO--------------------------------------
 	
 	Iterable<VentaProductoOut> findAllProductosByVenta(Long idVenta);
-
 	
 
 

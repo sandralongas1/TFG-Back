@@ -27,4 +27,12 @@ public interface IPlantLoveRepositoryProducto extends JpaRepository<Producto, Lo
 		    + "AND (:grupo IS NULL OR c.grupo = :grupo)"
 		    + "AND (:subcategorias IS NULL OR sc.id IN :subcategorias)")
 	List<ProductoOut> findAllProductoActivoFiltro(@Param("idCategoria") Long id_categoria, @Param("grupo") String grupo, @Param("subcategorias") List<Integer> subcategorias);	
+	
+	@Query("SELECT new com.proyecto.tfg.Dto.Out.ProductoOut(p.id, p.titulo, p.descripcion, p.precio, p.stock, p.imagen, sc.descripcion, c.descripcion) "
+			+ "FROM Producto p "
+			+ "JOIN p.subcategoria sc "
+			+ "JOIN sc.categoria c "
+			+ "WHERE p.activo = true "
+		    + "AND (:productosIds IS NULL OR p.id IN :productosIds)")
+	List<ProductoOut> findAllProductoActivoFiltroIds(@Param("productosIds") List<Integer> productosIds);	
 }

@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.proyecto.tfg.Dto.In.CategoriaIn;
 import com.proyecto.tfg.Dto.In.PerfilIn;
+import com.proyecto.tfg.Dto.In.ProductoFilterIdsIn;
 import com.proyecto.tfg.Dto.In.ProductoFilterIn;
 import com.proyecto.tfg.Dto.In.ProductoIn;
 import com.proyecto.tfg.Dto.In.SubcategoriaFilterIn;
@@ -338,6 +339,12 @@ public class PlantLoveService implements IPlantLoveService{
 	@Transactional(readOnly = true)
 	public Iterable<ProductoOut> findAllProductoActivoFiltro(ProductoFilterIn filtros){
 		return RepoProducto.findAllProductoActivoFiltro(filtros.getId_categoria(), filtros.getGrupo(), filtros.getSubcategorias());
+	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public Iterable<ProductoOut> findAllProductoActivoFiltroIds(ProductoFilterIdsIn filtros){
+		return RepoProducto.findAllProductoActivoFiltroIds(filtros.getProductosId());
 	}
 	
 	@Override
